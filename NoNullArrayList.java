@@ -28,7 +28,7 @@ public class NoNullArrayList<T> extends ArrayList<T>{
 
   public void add(int index, T element){
     if(element != null){
-      super.add(element);
+      super.add(index, element);
     }
     else{
       throw new IllegalArgumentException("Added element cannot be null");
