@@ -3,17 +3,20 @@ public class NoNullArrayList<T> extends ArrayList<T>{
   private ArrayList<T> s;
 
   public NoNullArrayList(){
-    ArrayList<T> s = new ArrayList<T>();
+    s = new ArrayList<T>();
   }
 
   public NoNullArrayList(int initialCapacity){
-    ArrayList<T> s = new ArrayList<T>(initialCapacity);
+    s = new ArrayList<T>(initialCapacity);
   }
 
   public T set(int index, T element){
-    remove(index);
-    add(element);
-    return element;
+    if(element == null){
+      throw new IllegalArgumentException("Not supposed to be null there");
+    }
+    T store = element;
+    super.set(index, element);
+    return store;
   }
 
   public boolean add(T element){
