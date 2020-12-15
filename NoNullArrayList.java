@@ -1,20 +1,19 @@
 import java.util.*;
 public class NoNullArrayList<T> extends ArrayList<T>{
-  private ArrayList<T> s;
 
   public NoNullArrayList(){
-    s = new ArrayList<T>();
+    ArrayList<T> s = new ArrayList<T>();
   }
 
   public NoNullArrayList(int initialCapacity){
-    s = new ArrayList<T>(initialCapacity);
+    ArrayList<T> s = new ArrayList<T>(initialCapacity);
   }
 
   public T set(int index, T element){
     if(element == null){
       throw new IllegalArgumentException("Not supposed to be null there");
     }
-    T store = element;
+    T store = super.get(index);
     super.set(index, element);
     return store;
   }
