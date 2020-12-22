@@ -17,7 +17,6 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
     }
     if(super.size() == 0){
       super.add(element);
-      System.out.println("no fukcing way");
       return true;
     }
 
@@ -25,13 +24,11 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
     if(super.size() == 1){
       if(element.compareTo(super.get(0)) >= 0){
         super.add(element);
-        System.out.println("monkey");
         System.out.println(element);
         return true;
       }
       else{
         super.add(0, element);
-        System.out.println("fucking everyhting");
         return true;
       }
     }
@@ -41,12 +38,10 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
 
       if(element.compareTo(super.get(0)) <= 0){
         super.add(0, element);
-        System.out.println("Smallest");
         return true;
       }
       if(element.compareTo(super.get(super.size()-1)) >= 0){
         super.add(element);
-        System.out.println("Biggest");
         return true;
       }
       for(int i = 0; i < super.size()-1; i++){
@@ -55,7 +50,6 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
         if(element.compareTo(here) > 0 && element.compareTo(next) <= 0){
           super.add(i+1, element);
           i++;
-          System.out.println("Middling");
           return true;
         }
 
@@ -109,5 +103,12 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
 
       }
     }
+  }
+
+  public T set(int index, T element){
+    T holder = super.get(index);
+    super.remove(super.get(index));
+    add(element);
+    return holder;
   }
 }
